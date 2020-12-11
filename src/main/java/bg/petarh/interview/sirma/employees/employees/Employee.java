@@ -1,67 +1,30 @@
 package bg.petarh.interview.sirma.employees.employees;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Employee {
-    private int id;
-    private int projectId;
-    private LocalDate startDate;
-    private LocalDate endDate;
 
-    private Employee(EmployeeBuilder employeeBuilder) {
-        this.id = employeeBuilder.id;
-        this.projectId = employeeBuilder.projectId;
-        this.startDate = employeeBuilder.startDate;
-        this.endDate = employeeBuilder.endDate == null ? LocalDate.now() : employeeBuilder.endDate;
-    }
+    private int id;
+    private List<ProjectEmployee> projectEmployeeList = new ArrayList<>();
 
     public int getId() {
         return id;
     }
 
-    public int getProjectId() {
-        return projectId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public List<ProjectEmployee> getProjectEmployeeList() {
+        return projectEmployeeList;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public void setProjectEmployeeList(List<ProjectEmployee> projectEmployeeList) {
+        this.projectEmployeeList = projectEmployeeList;
     }
 
-    static class EmployeeBuilder {
-        private int id;
-        private int projectId;
-        private LocalDate startDate;
-        private LocalDate endDate;
-
-        public EmployeeBuilder setId(int id) {
-            this.id = id;
-            return this;
-        }
-
-        public EmployeeBuilder setProjectId(int projectId) {
-            this.projectId = projectId;
-            return this;
-        }
-
-        public EmployeeBuilder setStartDate(LocalDate startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-
-        public EmployeeBuilder setEndDate(LocalDate endDate) {
-            this.endDate = endDate;
-            return this;
-        }
-
-
-        public Employee build() {
-            return new Employee(this);
-        }
-
+    public void addProjectEmployee(ProjectEmployee projectEmployee){
+        this.projectEmployeeList.add(projectEmployee);
     }
-
 }

@@ -1,5 +1,8 @@
-package bg.petarh.interview.sirma.employees.employees;
+package bg.petarh.interview.sirma.employees.empmanagement;
 
+import bg.petarh.interview.sirma.employees.employees.ProjectEmployee;
+import bg.petarh.interview.sirma.employees.exceptions.IdNotProvidedException;
+import bg.petarh.interview.sirma.employees.exceptions.LineFormatException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +14,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(value = BlockJUnit4ClassRunner.class)
-public class EmployeeBuilderTest {
+public class ProjectEmployeeBuilderTest {
 
     List<String> employees = new ArrayList<>();
 
@@ -24,23 +27,23 @@ public class EmployeeBuilderTest {
 
     @Test
     public void employeesBuilderTest() {
-        EmployeesBuilder eb = new EmployeesBuilder();
-        List<Employee> employeeList = eb.buildFromList(employees);
+        ProjectEmployeesBuilder eb = new ProjectEmployeesBuilder();
+        List<ProjectEmployee> projectEmployeeList = eb.buildFromList(employees);
 
-        assertEquals("should be 3", 3, employeeList.size());
+        assertEquals("should be 3", 3, projectEmployeeList.size());
     }
 
-    @Test(expected = StringToEmployeeConverter.IdNotProvidedException.class)
+    @Test(expected = IdNotProvidedException.class)
     public void employeesIdFailTest(){
         employees.add("143, , 2013-11-01, 2014-01-05");
-        EmployeesBuilder eb = new EmployeesBuilder();
+        ProjectEmployeesBuilder eb = new ProjectEmployeesBuilder();
         eb.buildFromList(employees);
     }
 
-    @Test(expected = StringToEmployeeConverter.LineFormatException.class)
+    @Test(expected = LineFormatException.class)
     public void employeesLineFailTest(){
         employees.add("143, 2013-11-01, 2014-01-05");
-        EmployeesBuilder eb = new EmployeesBuilder();
+        ProjectEmployeesBuilder eb = new ProjectEmployeesBuilder();
         eb.buildFromList(employees);
     }
 
