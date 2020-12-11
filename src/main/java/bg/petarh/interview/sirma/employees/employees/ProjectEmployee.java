@@ -36,6 +36,10 @@ public class ProjectEmployee {
         this.longestProjectEmployee = longestProjectEmployee;
     }
 
+    public ProjectEmployeeDayWrapper getLongestProjectEmployee() {
+        return longestProjectEmployee;
+    }
+
     public static class Builder {
         private Employee employee;
         private Project project;
