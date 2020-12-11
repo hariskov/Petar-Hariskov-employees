@@ -8,35 +8,60 @@ public class Employee {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    public int getId() {
-        return id;
+    private Employee(EmployeeBuilder employeeBuilder) {
+        this.id = employeeBuilder.id;
+        this.projectId = employeeBuilder.projectId;
+        this.startDate = employeeBuilder.startDate;
+        this.endDate = employeeBuilder.endDate == null ? LocalDate.now() : employeeBuilder.endDate;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return id;
     }
 
     public int getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(int projectId) {
-        this.projectId = projectId;
-    }
-
     public LocalDate getStartDate() {
         return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
     }
 
     public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    static class EmployeeBuilder {
+        private int id;
+        private int projectId;
+        private LocalDate startDate;
+        private LocalDate endDate;
+
+        public EmployeeBuilder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public EmployeeBuilder setProjectId(int projectId) {
+            this.projectId = projectId;
+            return this;
+        }
+
+        public EmployeeBuilder setStartDate(LocalDate startDate) {
+            this.startDate = startDate;
+            return this;
+        }
+
+        public EmployeeBuilder setEndDate(LocalDate endDate) {
+            this.endDate = endDate;
+            return this;
+        }
+
+
+        public Employee build() {
+            return new Employee(this);
+        }
+
     }
+
 }

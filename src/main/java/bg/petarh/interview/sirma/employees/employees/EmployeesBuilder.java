@@ -19,7 +19,8 @@ public class EmployeesBuilder {
 
 class StringToEmployeeConverter {
 
-    private StringToEmployeeConverter(){}
+    private StringToEmployeeConverter() {
+    }
 
     public static Employee convert(String input) {
 
@@ -29,13 +30,12 @@ class StringToEmployeeConverter {
             throw new LineFormatException();
         }
 
-        Employee employee = new Employee();
-        employee.setId(parseToInt(line[0]));
-        employee.setProjectId(parseToInt(line[1]));
-        employee.setStartDate(parseToLocalDate(line[2]));
-        employee.setEndDate(parseToLocalDate(line[3]));
-
-        return employee;
+        return new Employee.EmployeeBuilder()
+                .setId(parseToInt(line[0]))
+                .setProjectId(parseToInt(line[1]))
+                .setStartDate(parseToLocalDate(line[2]))
+                .setEndDate(parseToLocalDate(line[3]))
+                .build();
     }
 
     private static Integer parseToInt(String stringInput) {
