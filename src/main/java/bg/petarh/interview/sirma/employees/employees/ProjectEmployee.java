@@ -9,11 +9,11 @@ public class ProjectEmployee {
     private LocalDate endDate;
     private ProjectEmployeeDayWrapper longestProjectEmployee;
 
-    private ProjectEmployee(ProjectEmployeeBuilder projectEmployeeBuilder) {
-        this.employee = projectEmployeeBuilder.employee;
-        this.project = projectEmployeeBuilder.project;
-        this.startDate = projectEmployeeBuilder.startDate;
-        this.endDate = projectEmployeeBuilder.endDate == null ? LocalDate.now() : projectEmployeeBuilder.endDate;
+    private ProjectEmployee(Builder builder) {
+        this.employee = builder.employee;
+        this.project = builder.project;
+        this.startDate = builder.startDate;
+        this.endDate = builder.endDate == null ? LocalDate.now() : builder.endDate;
     }
 
     public Employee getEmployee() {
@@ -36,28 +36,28 @@ public class ProjectEmployee {
         this.longestProjectEmployee = longestProjectEmployee;
     }
 
-    public static class ProjectEmployeeBuilder {
+    public static class Builder {
         private Employee employee;
         private Project project;
         private LocalDate startDate;
         private LocalDate endDate;
 
-        public ProjectEmployeeBuilder setEmployee(Employee employee) {
+        public Builder setEmployee(Employee employee) {
             this.employee = employee;
             return this;
         }
 
-        public ProjectEmployeeBuilder setProject(Project project) {
+        public Builder setProject(Project project) {
             this.project = project;
             return this;
         }
 
-        public ProjectEmployeeBuilder setStartDate(LocalDate startDate) {
+        public Builder setStartDate(LocalDate startDate) {
             this.startDate = startDate;
             return this;
         }
 
-        public ProjectEmployeeBuilder setEndDate(LocalDate endDate) {
+        public Builder setEndDate(LocalDate endDate) {
             this.endDate = endDate;
             return this;
         }

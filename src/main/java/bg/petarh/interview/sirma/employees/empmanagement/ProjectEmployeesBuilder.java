@@ -12,27 +12,40 @@ import java.util.List;
 import java.util.Locale;
 
 public class ProjectEmployeesBuilder {
+
+    private EmployeeListWrapper employeeListWrapper;
+    private ProjectListWrapper projectListWrapper;
+
+    public ProjectEmployeesBuilder(ListHolder listHolder) {
+        this.employeeListWrapper = listHolder.getEmployeeListWrapper();
+        this.projectListWrapper = listHolder.getProjectListWrapper();
+    }
+
     public List<ProjectEmployee> buildFromList(List<String> stringInput) {
         List<ProjectEmployee> projectEmployees = new ArrayList<>();
 
-        for (String string : stringInput) {
-            ProjectEmployeeValueWrapper peWrapper = StringToEmployeeConverter.convert(string);
-            Employee employee = EmployeeHolder.getOrCreateEmployee(peWrapper.employeeId);
-            Project project = ProjectHolder.getOrCreateProject(peWrapper.projectId);
-
-            ProjectEmployee projectEmployee = new ProjectEmployee.ProjectEmployeeBuilder()
-                    .setEmployee(employee)
-                    .setProject(project)
-                    .setStartDate(peWrapper.startDate)
-                    .setEndDate(peWrapper.endDate)
-                    .build();
-
-            employee.addProjectEmployee(projectEmployee);
-            project.addProjectEmployee(projectEmployee);
-            projectEmployees.add(projectEmployee);
+        for (String line : stringInput) {
+            projectEmployees.add(getProjectEmployee(line));
         }
 
         return projectEmployees;
+    }
+
+    private ProjectEmployee getProjectEmployee(String line) {
+        ProjectEmployeeValueWrapper peWrapper = StringToEmployeeConverter.convert(line);
+        Employee employee = employeeListWrapper.getOrCreateEmployee(peWrapper.employeeId);
+        Project project = projectListWrapper.getOrCreateProject(peWrapper.projectId);
+
+        ProjectEmployee projectEmployee = new ProjectEmployee.Builder()
+                .setEmployee(employee)
+                .setProject(project)
+                .setStartDate(peWrapper.startDate)
+                .setEndDate(peWrapper.endDate)
+                .build();
+
+        employee.addProjectEmployee(projectEmployee);
+        project.addProjectEmployee(projectEmployee);
+        return projectEmployee;
     }
 }
 

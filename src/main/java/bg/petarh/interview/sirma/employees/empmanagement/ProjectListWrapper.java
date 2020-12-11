@@ -6,36 +6,33 @@ import bg.petarh.interview.sirma.employees.exceptions.ProjectNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectHolder {
-    private static List<Project> projectList = new ArrayList<>();
+public class ProjectListWrapper {
 
-    private ProjectHolder() {
-        // static only
-    }
+    private List<Project> projectList = new ArrayList<>();
 
-    public static List<Project> getProjectList() {
+    public List<Project> getProjectList() {
         return projectList;
     }
 
-    private static void addProject(Project project) {
-        if(!projectList.contains(project)) {
+    private void addProject(Project project) {
+        if (!projectList.contains(project)) {
             projectList.add(project);
         }
     }
 
-    public static Project findProject(int id) {
+    public Project findProject(int id) {
         return projectList.stream().filter(e -> e.getId() == id).findFirst().orElseThrow(ProjectNotFoundException::new);
     }
 
-    private static Project getProject(int id) {
+    private Project getProject(int id) {
         return projectList.stream().filter(e -> e.getId() == id).findFirst().orElse(null);
     }
 
-    public static Project getOrCreateProject(int projectId) {
+    public Project getOrCreateProject(int projectId) {
         Project project = getProject(projectId);
-        if(project == null){
+        if (project == null) {
             project = new Project(projectId);
-            ProjectHolder.addProject(project);
+            addProject(project);
         }
         return project;
     }
