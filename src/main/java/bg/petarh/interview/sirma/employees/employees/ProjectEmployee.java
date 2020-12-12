@@ -1,5 +1,8 @@
 package bg.petarh.interview.sirma.employees.employees;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.time.LocalDate;
 
 public class ProjectEmployee {
@@ -7,7 +10,6 @@ public class ProjectEmployee {
     private Project project;
     private LocalDate startDate;
     private LocalDate endDate;
-    private ProjectEmployeeDayWrapper longestProjectEmployee;
 
     private ProjectEmployee(Builder builder) {
         this.employee = builder.employee;
@@ -30,14 +32,6 @@ public class ProjectEmployee {
 
     public LocalDate getEndDate() {
         return endDate;
-    }
-
-    public void setLongestProjectEmployee(ProjectEmployeeDayWrapper longestProjectEmployee){
-        this.longestProjectEmployee = longestProjectEmployee;
-    }
-
-    public ProjectEmployeeDayWrapper getLongestProjectEmployee() {
-        return longestProjectEmployee;
     }
 
     public static class Builder {
@@ -68,5 +62,21 @@ public class ProjectEmployee {
         public ProjectEmployee build() {
             return new ProjectEmployee(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProjectEmployee that = (ProjectEmployee) o;
+
+        return new EqualsBuilder().append(employee, that.employee).append(project, that.project).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37).append(employee).append(project).toHashCode();
     }
 }
