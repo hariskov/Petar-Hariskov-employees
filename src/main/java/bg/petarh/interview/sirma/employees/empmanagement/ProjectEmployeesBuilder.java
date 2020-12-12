@@ -83,10 +83,17 @@ class StringToEmployeeConverter {
                     .appendOptional(DateTimeFormatter.ofPattern("dd-MM-yyyy"))
                     .appendOptional(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
                     .appendOptional(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+                    .appendOptional(DateTimeFormatter.ofPattern("yyyy MM dd"))
+                    .appendOptional(DateTimeFormatter.ofPattern("dd MM yyyy"))
+                    .appendOptional(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
+                    .appendOptional(DateTimeFormatter.ofPattern("dd/MMM/yyyy"))
+                    .appendOptional(DateTimeFormatter.ofPattern("yyyy/MMM/dd"))
+                    .appendOptional(DateTimeFormatter.ofPattern("yyyy MMM dd"))
+                    .appendOptional(DateTimeFormatter.ofPattern("dd MMM yyyy"))
                     .toFormatter(),
             DateTimeFormatter.ISO_LOCAL_DATE_TIME,
             DateTimeFormatter.ISO_OFFSET_DATE_TIME,
-            DateTimeFormatter.ISO_ZONED_DATE_TIME
+            DateTimeFormatter.ISO_ZONED_DATE_TIME,
     };
 
     private StringToEmployeeConverter() {
