@@ -54,6 +54,9 @@ public class ProjectEmployeeBuilderTest {
 
     @Test
     public void multipleDatesTest(){
+        List<ProjectEmployee> projectEmployeeList =  employeesBuilder.buildProjectEmployeesFromList(employees);
+        assertEquals("should be 3", 3, projectEmployeeList.size());
+
         employees.add("111, 15, 2009-02-01, 2009-02-02");
         employees.add("111, 15, 03-02-2009, 04-02-2009");
         employees.add("111, 15, 05/02/2009, 06/02/2009");
@@ -61,7 +64,8 @@ public class ProjectEmployeeBuilderTest {
         employees.add("111, 15, 2011-11-03T10:15:30+01:00, 2011-11-04T10:15:30+01:00");
         employees.add("111, 15, 2011-12-05T10:15:30+01:00[Europe/Paris], 2011-12-06T10:15:30+01:00[Europe/Paris]");
         employees.add("111 , 15 , 02 Jan 2018 , 03 Jan 2018");
-        List<ProjectEmployee> projectEmployeeList =  employeesBuilder.buildProjectEmployeesFromList(employees);
+
+        projectEmployeeList =  employeesBuilder.buildProjectEmployeesFromList(employees);
         assertEquals("should be 10", 10, projectEmployeeList.size());
     }
 

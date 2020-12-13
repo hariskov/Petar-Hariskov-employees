@@ -90,14 +90,6 @@
                     </archive>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.openjfx</groupId>-->
-<!--                <artifactId>javafx-maven-plugin</artifactId>-->
-<!--                <version>0.0.4</version>-->
-<!--                <configuration>-->
-<!--                    <mainClass>bg.petarh.sirma.employes.fx.App</mainClass>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 

@@ -12,7 +12,6 @@ public class MainConsole {
         if(!ArgumentsChecker.argumentsCheck(args)){
             System.exit(1);
         }
-
         MainArgumentsBuilder mab = new MainArgumentsBuilder(args);
         if (mab.getArguments().getWithUI()){
             EmployeeRunner fxApp = new FxApp();

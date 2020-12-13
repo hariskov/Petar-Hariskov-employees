@@ -18,7 +18,7 @@ public class ArgumentsChecker {
             return false;
         }
 
-        if (args.length % ARGS_COUNT != 0 || args.length > ARGS_COUNT) {
+        if (args.length % 2 != 0 || args.length > ARGS_COUNT) {
             System.out.println("wrong argument count");
             return false;
         }
