@@ -6,7 +6,7 @@ import bg.petarh.interview.sirma.employees.employees.ProjectEmployee;
 import bg.petarh.interview.sirma.employees.exceptions.DataInconsistencyException;
 import bg.petarh.interview.sirma.employees.exceptions.IdNotProvidedException;
 import bg.petarh.interview.sirma.employees.exceptions.LineFormatException;
-import bg.petarh.interview.sirma.employees.utils.EmployeesOverlapCalculator;
+import bg.petarh.interview.sirma.employees.utils.OverlapCalculator;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -57,7 +57,7 @@ public class ProjectEmployeesBuilder {
     private boolean existingOrOverlappingFilter(ProjectEmployee existingPE, ProjectEmployee projectEmployee) {
         if (existingPE.getEmployee().equals(projectEmployee.getEmployee()) &&
                 existingPE.getProject().equals(projectEmployee.getProject())) {
-            return 0 < EmployeesOverlapCalculator.getOverlapForProjectEmployees(existingPE, projectEmployee);
+            return 0 < OverlapCalculator.getOverlapForProjectEmployees(existingPE, projectEmployee);
         }
         return false;
     }

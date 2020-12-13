@@ -1,9 +1,5 @@
 package bg.petarh.interview.sirma.employees.empmanagement;
 
-import bg.petarh.interview.sirma.employees.employees.Employee;
-
-import java.util.List;
-
 public class ListHolder {
 
     private EmployeeListWrapper employeeListWrapper;
@@ -22,7 +18,4 @@ public class ListHolder {
         return projectListWrapper;
     }
 
-    public List<Employee> getEmployeeList(){
-        return this.employeeListWrapper.getEmployeeList();
-    }
 }
