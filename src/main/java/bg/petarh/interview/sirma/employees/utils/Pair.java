@@ -2,24 +2,24 @@ package bg.petarh.interview.sirma.employees.utils;
 
 import bg.petarh.interview.sirma.employees.employees.Employee;
 
-public class Pair<E extends Employee, T extends Long>{
+public class Pair<E extends Employee, T extends Long> {
     private E key;
     private T value;
 
-    Pair(){
+    Pair() {
         this.key = null;
-        this.value = (T)Long.valueOf(0L);
+        this.value = (T) Long.valueOf(0L);
     }
 
-    public Employee getKey(){
+    public Employee getKey() {
         return this.key;
     }
 
-    public T getValue(){
+    public T getValue() {
         return this.value;
     }
 
-    void updatePair(E employee, T days){
+    void updatePair(E employee, T days) {
         this.key = employee;
         this.value = days;
     }

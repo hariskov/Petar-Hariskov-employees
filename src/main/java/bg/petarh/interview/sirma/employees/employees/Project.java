@@ -11,7 +11,7 @@ public class Project {
     private int id;
     private List<ProjectEmployee> projectEmployees = new ArrayList<>();
 
-    public Project(int id){
+    public Project(int id) {
         this.id = id;
     }
 

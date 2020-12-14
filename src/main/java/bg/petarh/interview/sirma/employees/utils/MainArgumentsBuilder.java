@@ -18,12 +18,12 @@ public class MainArgumentsBuilder {
         this.holder = new ArgumentsHolder.Builder().setFilePath(filePath).setWithUi(withUi).build();
     }
 
-    private String findValueInArgs(String param, String[] args){
+    private String findValueInArgs(String param, String[] args) {
         for (int i = 0; i < args.length; i++) {
-            if(args[i].strip().toLowerCase(Locale.ROOT).equals(param.strip().toLowerCase(Locale.ROOT))){
+            if (args[i].strip().toLowerCase(Locale.ROOT).equals(param.strip().toLowerCase(Locale.ROOT))) {
                 try {
                     return args[i + 1];
-                }catch(IndexOutOfBoundsException indexOutOfBoundsException){
+                } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
                     System.out.println(indexOutOfBoundsException.getLocalizedMessage());
                 }
             }

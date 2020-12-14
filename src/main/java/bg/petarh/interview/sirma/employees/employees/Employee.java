@@ -27,7 +27,7 @@ public class Employee {
         this.projectEmployeeList = projectEmployeeList;
     }
 
-    public void addProjectEmployee(ProjectEmployee projectEmployee){
+    public void addProjectEmployee(ProjectEmployee projectEmployee) {
         this.projectEmployeeList.add(projectEmployee);
     }
 

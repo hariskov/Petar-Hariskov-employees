@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class ProjectTable extends TableView<EmployeeProjectResult> {
 
-    public ProjectTable(){
+    public ProjectTable() {
 
         // copy from Oracle docs //
         TableColumn<EmployeeProjectResult, Integer> projectIdCol = new TableColumn<>("Project ID");
@@ -31,7 +31,7 @@ public class ProjectTable extends TableView<EmployeeProjectResult> {
         this.setWidth(500);
     }
 
-    public void setProjectEmployees(List<Project> projects){
+    public void setProjectEmployees(List<Project> projects) {
         List<EmployeeProjectResult> result = projects.stream().map(EmployeesOverlapGenerator::findLongestCoEmployeesByProject).collect(Collectors.toList());
         this.setItems(FXCollections.observableArrayList(result));
     }

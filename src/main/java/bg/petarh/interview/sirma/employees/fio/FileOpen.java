@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileOpen {
-    private FileOpen(){}
+    private FileOpen() {
+    }
 
     public static List<String> readFileToListOfLines(String filePath) throws IOException {
 

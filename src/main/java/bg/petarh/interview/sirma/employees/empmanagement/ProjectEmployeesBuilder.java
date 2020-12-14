@@ -124,14 +124,14 @@ class StringToEmployeeConverter {
         if (stringInput == null || stringInput.strip().isEmpty() || stringInput.strip().toLowerCase(Locale.ROOT).equals("null")) {
             return null;
         }
-        for(DateTimeFormatter parser : parsers) {
+        for (DateTimeFormatter parser : parsers) {
             try {
                 return LocalDate.parse(stringInput.strip(), parser);
             } catch (Exception e) {
                 // will break at wrong parses; throw only if all fail
             }
         }
-        throw new DateTimeParseException("cant parse : " +  stringInput.strip() , "" ,1);
+        throw new DateTimeParseException("cant parse : " + stringInput.strip(), "", 1);
     }
 
 }

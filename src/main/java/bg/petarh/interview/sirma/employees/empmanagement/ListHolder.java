@@ -5,7 +5,7 @@ public class ListHolder {
     private EmployeeListWrapper employeeListWrapper;
     private ProjectListWrapper projectListWrapper;
 
-    public ListHolder(){
+    public ListHolder() {
         this.employeeListWrapper = new EmployeeListWrapper();
         this.projectListWrapper = new ProjectListWrapper();
     }
